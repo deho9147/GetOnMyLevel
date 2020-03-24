@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#ddffff</color>
+    <color name="textColor">#ddffff</color>
+    <color name="colorAccent">#F00</color>
+    <color name="backgroundColor">#2d2d2d</color>
+    <color name="buttonColor">#595959</color>
+
+    <color name="pointsCenter">#4dff4d</color>
+    <color name="pointsMiddle">#0066ff</color>
+    <color name="pointsOutside">#ffff00</color>
+    <color name="guessBarThumb">#ff0000</color>
+    <color name="team1Color">#ab80C6</color>
+    <color name="team2Color">#66ff66</color>
+</resources>

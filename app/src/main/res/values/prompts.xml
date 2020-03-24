@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="leastMost">
+        <item>Attractive</item>
+        <item>Huggable</item>
+        <item>Bingeable</item>
+        <item>Sittable</item>
+        <item>Touchable</item>
+        <item>Cute</item>
+        <item>Tasteable</item>
+        <item>Tasteful</item>
+        <item>Catchy</item>
+        <item>Painful</item>
+        <item>Worthwhile</item>
+        <item>Extreme</item>
+        <item>Enjoyable</item>
+        <item>Notable</item>
+        <item>Hittable</item>
+        <item>Annoying</item>
+        <item>Efficient</item>
+        <item>Meaningful</item>
+        <item>Dangerous</item>
+        <item>Paranoid</item>
+        <item>Horrifying</item>
+        <item>Disgusting</item>
+        <item>Important</item>
+        <item>Unusual</item>
+        <item>Versatile</item>
+        <item>Scented</item>
+        <item>Radical</item>
+        <item>Cringy</item>
+        <item>Friendly</item>
+        <item>Creepy</item>
+        <item>Overrated</item>
+        <item>Hipster</item>
+        <item>Spooky</item>
+        <item>Mobile</item>
+        <item>Unique</item>
+        <item>Useful Invention</item>
+        <item>Villainous</item>
+        <item>Boring</item>
+        <item>Charming</item>
+        <item>Common Action</item>
+        <item>Rough</item>
+        <item>Horizontal</item>
+    </string-array>
+    <string-array name="notWeirdtoWeird">
+        <item>Greeting</item>
+        <item>Pose</item>
+        <item>Dance</item>
+        <item>Run</item>
+        <item>Sitting Position</item>
+        <item>Face</item>
+        <item>Walk</item>
+        <item>Noise</item>
+        <item>Voice</item>
+        <item>Phrase</item>
+        <item>Song</item>
+        <item>Fruit</item>
+        <item>Animal</item>
+        <item>Number</item>
+    </string-array>
+    <string-array name="worsttoBest">
+        <item>Mythical Creature</item>
+        <item>Food</item>
+        <item>Superhero</item>
+        <item>Sport</item>
+        <item>Song</item>
+        <item>Pet</item>
+        <item>Animal</item>
+        <item>Animated Movie</item>
+        <item>Movie</item>
+        <item>Cooking Utensil</item>
+        <item>Smell</item>
+        <item>Soda</item>
+        <item>Pizza Topping</item>
+        <item>Greek God</item>
+        <item>Historical Leader</item>
+        <item>Mouthfeel</item>
+        <item>City</item>
+        <item>Color</item>
+        <item>Rhyming Name</item>
+        <item>Candy</item>
+        <item>Chain Restaurant</item>
+        <item>Dinner Side</item>
+        <item>Flavor of Chip</item>
+    </string-array>
+</resources>

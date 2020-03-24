@@ -1,0 +1,46 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:colorBackground">@color/backgroundColor</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:seekBarStyle">@style/seekBarStyle</item>
+        <item name="android:progressBarStyle">@style/progressBarStyle</item>
+        <item name="android:switchStyle">@style/switchStyle</item>
+        <item name="android:editTextStyle">@style/editTextStyle</item>
+    </style>
+    <style name="seekBarStyle" parent = "@style/Widget.AppCompat.SeekBar">
+        <item name="android:progressBackgroundTint">#000</item>
+        <item name="android:progressTint">?attr/colorAccent</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@android:drawable/progress_horizontal</item>
+        <item name="android:indeterminateDrawable">@android:drawable/progress_horizontal</item>
+        <item name="android:minHeight">10dp</item>
+        <item name="android:maxHeight">20dp</item>
+    </style>
+    <style name="progressBarStyle" parent="@style/Widget.AppCompat.ProgressBar">
+        <item name="android:radius">4dp</item>
+        <item name="android:scaleY">5.2</item>
+    </style>
+    <style name="switchStyle" parent="@style/Widget.AppCompat.CompoundButton.Switch">
+        <item name="android:track">@drawable/switch_track</item>
+        <item name="android:thumb">@drawable/switch_thumb_team1</item>
+        <item name="android:trackTint">@color/buttonColor</item>
+    </style>
+    <style name="editTextStyle" parent="@style/Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:backgroundTint">@color/textColor</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="textStyle">
+        <item name="android:textSize">24dp</item>
+        <item name="android:paddingLeft">40dp</item>
+    </style>
+    <style name="buttonStyle" parent="@style/Widget.AppCompat.Button.Small">
+        <item name="android:backgroundTint">@color/buttonColor</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+</resources>

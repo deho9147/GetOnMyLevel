@@ -134,7 +134,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View view) {
                 System.out.println(higherLowerSwitch.isChecked());
                 scoreRound();
-                hidePointsBar.setProgress(0);
+                hideRevealPointsBar();
             }
         });
         nextTurnButton = (Button)findViewById(R.id.next_turn_button);
@@ -245,11 +245,13 @@ public class GameActivity extends AppCompatActivity {
             hidePointsBar.setProgress(0);
             isHidden = false;
             hiderButton.setText("Hide");
+            guessBar.setEnabled(false);
         }
         else{
             hidePointsBar.setProgress(100);
             isHidden = true;
             hiderButton.setText("Show");
+            guessBar.setEnabled(true);
         }
     }
     private void changeActiveTeam(){

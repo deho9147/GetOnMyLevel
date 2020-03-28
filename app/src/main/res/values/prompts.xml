@@ -43,6 +43,25 @@
         <item>Common Action</item>
         <item>Rough</item>
         <item>Horizontal</item>
+        <item>Bitter</item>
+        <item>Fluffy</item>
+        <item>Uneven</item>
+        <item>Wet</item>
+        <item>Majestic</item>
+        <item>Big</item>
+        <item>Futuristic</item>
+        <item>Grumpy</item>
+        <item>Jolly</item>
+        <item>Romantic</item>
+        <item>Cherubic</item>
+        <item>Old</item>
+        <item>Cumbersome</item>
+        <item>Illegal</item>
+        <item>Bland</item>
+        <item>Bright</item>
+        <item>Nerdy</item>
+        <item>Blobby</item>
+        <item>Crooked</item>
     </string-array>
     <string-array name="notWeirdtoWeird">
         <item>Greeting</item>
@@ -59,6 +78,7 @@
         <item>Fruit</item>
         <item>Animal</item>
         <item>Number</item>
+        <item>Way to put on Shoes</item>
     </string-array>
     <string-array name="worsttoBest">
         <item>Mythical Creature</item>
@@ -84,5 +104,7 @@
         <item>Chain Restaurant</item>
         <item>Dinner Side</item>
         <item>Flavor of Chip</item>
+        <item>Word</item>
+        <item>TV show</item>
     </string-array>
 </resources>

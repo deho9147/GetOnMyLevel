@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="SharedPreferenceKey">SharedPreferenceKey</string>
+    <string name="ScoreListKey">ScoreListKey</string>
+    <string name="CoopToLeaderboardKey">CoopToLeaderboardKey</string>
+</resources>

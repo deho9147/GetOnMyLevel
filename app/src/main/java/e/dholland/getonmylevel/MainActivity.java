@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
     Button startButton;
     Button rulesButton;
+    Button coopButton;
+    Button leaderboardButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,21 @@ public class MainActivity extends AppCompatActivity {
                 startGame(view);
             }
         });
+
+        coopButton = (Button)findViewById(R.id.coop_button);
+        coopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startCoop(view);
+            }
+        });
+        leaderboardButton = (Button)findViewById(R.id.start_leaderboard);
+        leaderboardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startLeaderboard(view);
+            }
+        });
     }
     public void startGame(View view){
         Intent intent = new Intent(this, GameActivity.class);
@@ -36,6 +53,14 @@ public class MainActivity extends AppCompatActivity {
     }
     public void showRules(View view){
         Intent intent = new Intent(this, RulesActivity.class);
+        startActivity(intent);
+    }
+    public void startCoop(View view){
+        Intent intent = new Intent(this, CoopActivity.class);
+        startActivity(intent);
+    }
+    public void startLeaderboard(View view){
+        Intent intent = new Intent(this, LeaderboardActivity.class);
         startActivity(intent);
     }
 }

@@ -33,6 +33,7 @@
         <item name="android:textColor">@color/textColor</item>
         <item name="android:backgroundTint">@color/textColor</item>
         <item name="android:textAlignment">center</item>
+        <item name="android:textColorHint">@color/buttonColor</item>
     </style>
     <style name="textStyle">
         <item name="android:textSize">24dp</item>

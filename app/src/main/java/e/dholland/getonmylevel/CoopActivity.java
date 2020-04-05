@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
 
-public class GameActivity extends AppCompatActivity {
+public class CoopActivity extends AppCompatActivity {
     SeekBar guessBar;
     SeekBar pointsBar;
     ProgressBar hidePointsBar;
@@ -30,37 +30,22 @@ public class GameActivity extends AppCompatActivity {
     private String[] notWeirdWeirdPrompts;
     private String[] worstBestPrompts;
 
-    Switch teamSwitch;
-    TextView teamGuessingText;
-    int teamActive = 1;
-
-    Switch higherLowerSwitch;
     Button scoreButton;
     Button nextTurnButton;
 
-    EditText team1ScoreText;
-    int team1Score;
-    EditText team2ScoreText;
-    int team2Score;
+    EditText roundText;
+    int roundNumber;
+    EditText teamScoreText;
+    int teamScore;
+
+    Button testButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.AppTheme);
-        setContentView(R.layout.activity_game);
-
-        teamGuessingText = (TextView)findViewById(R.id.team_guessing_text);
-        teamSwitch = (Switch)findViewById(R.id.team_switch);
-        teamSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if (compoundButton.isPressed()){
-                    changeActiveTeam();
-
-                }
-            }
-        });
+        setContentView(R.layout.activity_coop);
 
         guessBar = (SeekBar) findViewById(R.id.guesserBar);
         guessBar.setProgress(50);
@@ -99,41 +84,37 @@ public class GameActivity extends AppCompatActivity {
         });
 
 
-        team1Score = 0;
-        team1ScoreText=(EditText)findViewById(R.id.team1_score);
-        team1ScoreText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        roundNumber = 1;
+        roundText=(EditText)findViewById(R.id.round_counter);
+        roundText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
                 if(actionId== EditorInfo.IME_ACTION_DONE||actionId== EditorInfo.IME_ACTION_NEXT){
-                    team1Score=Integer.parseInt(team1ScoreText.getText().toString());
-                    team1ScoreText.clearFocus();
+                    roundNumber=Integer.parseInt(roundText.getText().toString());
+                    roundText.clearFocus();
 
                 }
                 return false;
             }
         });
-        team2Score = 0;
-        team2ScoreText=(EditText)findViewById(R.id.team2_score);
-        team2ScoreText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        teamScore = 0;
+        teamScoreText=(EditText)findViewById(R.id.team_score);
+        teamScoreText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
                 if(actionId== EditorInfo.IME_ACTION_DONE||actionId== EditorInfo.IME_ACTION_NEXT){
-                    team2Score=Integer.parseInt(team2ScoreText.getText().toString());
-                    team2ScoreText.clearFocus();
+                    teamScore=Integer.parseInt(teamScoreText.getText().toString());
+                    teamScoreText.clearFocus();
 
                 }
                 return false;
             }
         });
-
-        higherLowerSwitch = (Switch)findViewById(R.id.higher_lower_switch);
-        higherLowerSwitch.setThumbDrawable(getDrawable(R.drawable.switch_thumb_team2));
 
         scoreButton = (Button)findViewById(R.id.score_button);
         scoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println(higherLowerSwitch.isChecked());
                 scoreRound();
                 hideRevealPointsBar();
             }
@@ -142,11 +123,25 @@ public class GameActivity extends AppCompatActivity {
         nextTurnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setNewPrompt();
-                changeActiveTeam();
-                hidePointsBar.setProgress(0);
-                hideRevealPointsBar();
-                setNewPrompt();
+                if (roundNumber<9) {
+                    setNewPrompt();
+                    hidePointsBar.setProgress(0);
+                    hideRevealPointsBar();
+                    setNewPrompt();
+                    roundNumber = roundNumber + 1;
+                    roundText.setText(String.valueOf(roundNumber));
+                }else if (roundNumber == 9){
+                    setNewPrompt();
+                    hidePointsBar.setProgress(0);
+                    hideRevealPointsBar();
+                    setNewPrompt();
+                    roundNumber = roundNumber + 1;
+                    roundText.setText(String.valueOf(roundNumber));
+                    nextTurnButton.setText("End Game");
+                }else{
+                    endGameScreen(view);
+                }
+
             }
         });
 
@@ -178,69 +173,27 @@ public class GameActivity extends AppCompatActivity {
     private void scoreRound() {
         if (guessBar.getProgress() < (pointsBar.getProgress()-2)) {
             //Other team gets to guess whether other team was higher or lower
-            if (higherLowerSwitch.isChecked() == false) {
-                if (teamActive == 1) {
-                    team2Score = (int) team2Score + 1;
-                    team2ScoreText.setText(String.valueOf(team2Score));
-                } else if (teamActive == 2) {
-                    team1Score = (int) team1Score + 1;
-                    team1ScoreText.setText(String.valueOf(team1Score));
-                }
-            }
             if (guessBar.getProgress() >= (pointsBar.getProgress() - 6)) {
-                if (teamActive == 1) {
-                    team1Score = team1Score + 3;
-                    team1ScoreText.setText(String.valueOf(team1Score));
-                } else if (teamActive == 2) {
-                    team2Score = team2Score + 3;
-                    team2ScoreText.setText(String.valueOf(team2Score));
-                }
+                teamScore = teamScore + 3;
+                teamScoreText.setText(String.valueOf(teamScore));
             } else if (guessBar.getProgress() >= (pointsBar.getProgress() - 10)) {
-                    if (teamActive == 1) {
-                        team1Score = team1Score + 2;
-                        team1ScoreText.setText(String.valueOf(team1Score));
-                    } else if (teamActive == 2) {
-                        team2Score = team2Score + 2;
-                        team2ScoreText.setText(String.valueOf(team2Score));
-                    }
+                teamScore = teamScore + 2;
+                teamScoreText.setText(String.valueOf(teamScore));
             }
         } else if (guessBar.getProgress() > pointsBar.getProgress()+2) {
-            if (higherLowerSwitch.isChecked()==true) {
-                if (teamActive == 1) {
-                    team2Score = (int) team2Score + 1;
-                    team2ScoreText.setText(String.valueOf(team2Score));
-                } else if (teamActive == 2) {
-                    team1Score = (int) team1Score + 1;
-                    team1ScoreText.setText(String.valueOf(team1Score));
-                }
-            }
             if (guessBar.getProgress() <= (pointsBar.getProgress() + 6)) {
-                if (teamActive == 1) {
-                    team1Score = team1Score + 3;
-                    team1ScoreText.setText(String.valueOf(team1Score));
-                } else if (teamActive == 2) {
-                    team2Score = team2Score + 3;
-                    team2ScoreText.setText(String.valueOf(team2Score));
-                }
+                teamScore = teamScore + 3;
+                teamScoreText.setText(String.valueOf(teamScore));
             } else if (guessBar.getProgress() <= (pointsBar.getProgress() + 10)) {
-                if (teamActive == 1) {
-                    team1Score = team1Score + 2;
-                    team1ScoreText.setText(String.valueOf(team1Score));
-                } else if (teamActive == 2) {
-                    team2Score = team2Score + 2;
-                    team2ScoreText.setText(String.valueOf(team2Score));
-                }
+                teamScore = teamScore + 2;
+                teamScoreText.setText(String.valueOf(teamScore));
             }
         } else if (guessBar.getProgress() >= (pointsBar.getProgress()-2)&& guessBar.getProgress() <=(pointsBar.getProgress()+2)) {
-                if (teamActive == 1) {
-                    team1Score = team1Score + 4;
-                    team1ScoreText.setText(String.valueOf(team1Score));
-                } else if (teamActive == 2) {
-                    team2Score = team2Score + 4;
-                    team2ScoreText.setText(String.valueOf(team2Score));
-                }
-            }
+                teamScore = teamScore + 4;
+                teamScoreText.setText(String.valueOf(teamScore));
+        }
     }
+
     private void hideRevealPointsBar(){
         if (hidePointsBar.getProgress()==100) {
             hidePointsBar.setProgress(0);
@@ -255,30 +208,10 @@ public class GameActivity extends AppCompatActivity {
             guessBar.setEnabled(true);
         }
     }
-    private void changeActiveTeam(){
-        if (teamActive == 2) {
-            teamActive = 1;
-            teamSwitch.setChecked(false);
-            teamSwitch.setThumbDrawable(getDrawable(R.drawable.switch_thumb_team1));
-            higherLowerSwitch.setThumbDrawable(getDrawable(R.drawable.switch_thumb_team2));
-            hidePointsBar.getProgressDrawable().setColorFilter(getColor(R.color.team1Color), PorterDuff.Mode.SRC_IN);
-            teamGuessingText.setText("Team 1 is guessing");
-        }
-        else {
-            teamActive = 2;
-            teamSwitch.setChecked(true);
-            teamSwitch.setThumbDrawable(getDrawable(R.drawable.switch_thumb_team2));
-            higherLowerSwitch.setThumbDrawable(getDrawable(R.drawable.switch_thumb_team1));
-            hidePointsBar.getProgressDrawable().setColorFilter(getColor(R.color.team2Color), PorterDuff.Mode.SRC_IN);
-            teamGuessingText.setText("Team 2 is guessing");
-        }
-
-    }
-    public void onBackPressed(){
-        super.onBackPressed();
-        Intent intent = new Intent(this,MainActivity.class);
+    private void endGameScreen(View view){
+        Intent intent = new Intent(this, LeaderboardActivity.class);
+        intent.putExtra("teamScore", teamScore);
         startActivity(intent);
-        finish();
     }
 
 }

@@ -9,14 +9,15 @@
 
     <Button
             style="@style/buttonStyle"
-            android:text="Start Game"
+            android:text="Co-op Game"
             android:layout_width="170dp"
             android:layout_height="50dp"
-            android:id="@+id/start_game_button" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/coop_button"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintHorizontal_bias="0.498" app:layout_constraintVertical_bias="0.652"/>
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/rules_button" app:layout_constraintVertical_bias="0.98"/>
     <TextView
             android:text="Get On My Level"
             android:textSize="40dp"
@@ -27,17 +28,17 @@
             app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintHorizontal_bias="0.496" app:layout_constraintVertical_bias="0.177"/>
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintVertical_bias="0.177"/>
     <Button
             style="@style/buttonStyle"
-            android:text="How to Play"
+            android:text="Team Game"
             android:layout_width="170dp"
             android:layout_height="50dp"
-            android:id="@+id/rules_button" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:id="@+id/start_game_button" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintVertical_bias="0.566"/>
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/coop_button"
+            app:layout_constraintVertical_bias="0.985" app:layout_constraintHorizontal_bias="0.502"/>
     <ImageView
             android:layout_width="260dp"
             android:layout_height="260dp" app:srcCompat="@drawable/main_page_icon"
@@ -45,7 +46,28 @@
             app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintVertical_bias="0.354"/>
+            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintVertical_bias="0.349"/>
+    <Button
+            style="@style/buttonStyle"
+            android:text="How to Play"
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:id="@+id/rules_button" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/start_leaderboard"
+            app:layout_constraintVertical_bias="0.98"/>
+    <Button
+            style="@style/buttonStyle"
+            android:text="Leaderboard"
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:id="@+id/start_leaderboard" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.82"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
